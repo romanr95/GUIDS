@@ -1,5 +1,5 @@
-<img src="https://github.com/romanr95/MONITORING/blob/main/uptimekuma_1%20(2).png" width="400" alt="" /># 
-Teritori Network (Mainnet) Установка ноды и создание валидатора
+<img src="[https://github.com/romanr95/MONITORING/blob/main/uptimekuma_1%20(2).png](https://github.com/romanr95/Guids/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-31%20%D0%B2%2000.37.26.png)" width="400" alt="" /> 
+# Teritori Network (Mainnet) Установка ноды и создание валидатора
 # Установка ноды
 Устанавливаем бинарники
 ```bash
