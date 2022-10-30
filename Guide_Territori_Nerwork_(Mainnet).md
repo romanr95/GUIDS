@@ -1,5 +1,6 @@
-<img src="[https://github.com/romanr95/MONITORING/blob/main/uptimekuma_1%20(2).png](https://github.com/romanr95/Guids/blob/main/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-10-31%20%D0%B2%2000.37.26.png)" width="400" alt="" /> 
-# Teritori Network (Mainnet) Установка ноды и создание валидатора
+<img src="https://github.com/romanr95/Guids/blob/main/TERITORI%20LOGO.png" width="1050" alt="" />
+
+# TERITORI NETWORK (MAINNET) УСТАНОВКА НОДЫ И СОЗДАНИЕ ВАЛИДАТОРА
 # Установка ноды
 Устанавливаем бинарники
 ```bash
@@ -28,4 +29,47 @@ sha256sum ~/.teritorid/config/genesis.json
 Скачиваем addrbook.json
 ```bash
 wget -O $HOME/.teritorid/config/addrbook.json "http://65.108.6.45:8000/teritori/addrbook.json"
+```
+Создаем сервисный файл (1 команда)
+```bash
+sudo tee /etc/systemd/system/teritorid.service > /dev/null <<EOF
+[Unit]
+Description=teritorid
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which teritorid) start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+```bash
+systemctl daemon-reload && \
+systemctl enable teritorid && \
+systemctl restart teritorid && journalctl -u teritorid -f -o cat
+```
+# Создание валидатора
+Создаем кошелек
+```bash
+teritorid keys add <name_wallet> --keyring-backend os
+!!!Сохраняем seed!!!
+```
+Создаем валидатора
+```bash
+teritorid tx staking create-validator \
+--chain-id teritori-1 \
+--commission-rate 0.05 \
+--commission-max-rate 0.2 \
+--commission-max-change-rate 0.1 \
+--min-self-delegation "1000000" \
+--amount 1000000utori \
+--pubkey $(teritorid tendermint show-validator) \
+--moniker "<name_moniker>" \
+--from <name_wallet> \
+--fees 555utori
 ```
