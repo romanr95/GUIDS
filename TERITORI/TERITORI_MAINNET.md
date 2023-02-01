@@ -12,9 +12,9 @@
 ```THE ALPHA dApp``` - https://app.teritori.com/ <br>
 ```COINGECKO``` - https://www.coingecko.com/en/coins/teritori/
 # SERVICES
-```RPC``` - 148.251.53.202:26797 <br>
-```API``` - 148.251.53.202:1317 <br>
-```PEER``` - 7fb5a1a53f481f037487920ed08b0495158e2041@148.251.53.202:26796 
+```RPC``` - 65.108.199.120:36657 <br>
+```API``` - 65.108.199.120:1317 <br>
+```PEER``` - fcd6ccd5fef149059fa5d1696b3b358889046f3a@65.108.199.120:36656 
 # EXPLORERS
 ```MINTSCAN``` - https://www.mintscan.io/teritori/ <br>
 ```PINGPUB``` - https://ping.pub/teritori/ <br>
@@ -101,7 +101,7 @@ teritorid tx staking create-validator \
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=148.251.53.202:26797 && \
+SNAP_RPC=65.108.199.120:36657 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 100)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
@@ -111,7 +111,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 sudo systemctl stop teritorid && teritorid tendermint unsafe-reset-all --home $HOME/.teritorid --keep-addr-book
 ```
 ```
-peers="7fb5a1a53f481f037487920ed08b0495158e2041@148.251.53.202:26796"
+peers="fcd6ccd5fef149059fa5d1696b3b358889046f3a@65.108.199.120:36656"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.teritorid/config/config.toml
 ```
 ```
