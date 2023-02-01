@@ -13,7 +13,7 @@
 ```COINGECKO``` - https://www.coingecko.com/en/coins/teritori/
 # SERVICES
 ```RPC``` - 65.108.199.120:36657 <br>
-```API``` - 65.108.199.120:1317 <br>
+```API``` - 65.108.199.120:1327 <br>
 ```PEER``` - fcd6ccd5fef149059fa5d1696b3b358889046f3a@65.108.199.120:36656 
 # EXPLORERS
 ```MINTSCAN``` - https://www.mintscan.io/teritori/ <br>
