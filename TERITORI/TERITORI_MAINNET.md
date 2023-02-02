@@ -57,7 +57,7 @@ sed -i.bak -e "s/^seeds *=.*/seeds = \"$seeds\"/; s/^persistent_peers *=.*/persi
 ```
 # ADD MIN GAS
 ```
-sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0.001utori"/g' ~/.teritorid/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.25unibi\"/" $HOME/.nibid/config/app.toml
 ```
 # CREATE THE SERVICE FILE
 ```
