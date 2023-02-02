@@ -9,9 +9,9 @@
 ```MEDIUM``` - https://blog.nibiru.fi/ <br>
 ```LINKEDIN``` - https://www.linkedin.com/company/nibiruchain/ 
 # SERVICES
-```RPC``` - 65.108.199.120:36657 <br>
-```API``` - 65.108.199.120:1327 <br>
-```PEER``` - fcd6ccd5fef149059fa5d1696b3b358889046f3a@65.108.199.120:36656 
+```RPC``` - 65.108.199.120:46657 <br>
+```API``` - 65.108.199.120:1337 <br>
+```PEER``` - ddb452dcad628cc17f519467810a2957518ac7d7@65.108.199.120:46656 
 # EXPLORERS
 ```NIBIRU.FI``` - https://testnet-2.nibiru.fi/ 
 # SOFTWARE REQUIREMENTS
@@ -94,7 +94,7 @@ nibid tx staking create-validator \
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=80.76.43.63:26659 && \
+SNAP_RPC=65.108.199.120:46657 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
@@ -104,7 +104,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 sudo systemctl stop nibid && nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
 ```
 ```
-peers="0f26303698b36100f4497d31630acd4fab238e85@80.76.43.63:26660"
+peers="ddb452dcad628cc17f519467810a2957518ac7d7@65.108.199.120:46656"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.nibid/config/config.toml
 ```
 ```
