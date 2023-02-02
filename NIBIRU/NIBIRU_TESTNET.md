@@ -94,7 +94,7 @@ nibid tx staking create-validator \
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=https://nibiru.rpc.t.anode.team:443 && \
+SNAP_RPC=80.76.43.63:26659 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
