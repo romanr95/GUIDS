@@ -109,7 +109,8 @@ wallet_generate_secret_key
 <img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/9.png" width="1050" alt="" />
 
 Enter password.
-<img src="" alt="" />
+
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/10.png" alt="" />
 
 Register a staking wallet address.
 ```
@@ -120,23 +121,35 @@ Look at the wallet address and add it to the command below.
 ```
 node_start_staking YOUR_WALLET_ADDRESS
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/11.png" alt="" />
+
 Check if the address is staked.
 ```
 node_get_staking_addresses
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/12.png" alt="" />
+
 Exit the client (ctrl+c) and check the operation of the node.
 ```
 cd /$HOME/massa/massa-client/ && ./massa-client wallet_info
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/13.png" alt="" />
+
 # STEP 7
 Go to Discord, to the #testnet-faucet branch.
 
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/14.png" alt="" />
+
 Request tokens to the wallet address.
+
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/15.png" alt="" />
 
 Wallet balance check.
 ```
 cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD wallet_info
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/16.png" alt="" />
+
 Buy a roll.
 ```
 cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD
@@ -144,10 +157,14 @@ cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD
 ```
 buy_rolls YOUR_WALLET_ADDRESS 1 0
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/17.png" alt="" />
+
 Check buying a roll. (Type command in client)
 ```
 wallet_info
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/18.png" alt="" />
+
 After 1 hour 40 minutes, the roll will become active and staking of tokens will begin.
 # STEP 8.
 Register a node in Discord.
@@ -155,7 +172,11 @@ Look at the IP addresses of your server.
 ```
 wget -qO- eth0.me
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/19.png" alt="" />
+
 Copy the IP address and send it to MassaBot.
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/20.png" alt="" />
+
 Copy USER_ID from MassaBot.
 Client launch.
 ```
@@ -165,8 +186,13 @@ Enter the next command.
 ```
 node_testnet_rewards_program_ownership_proof YOUR_WALLET_ADDRESS YOUR_USER_ID
 ```
-Copy the code given by the client.
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/21.png" alt="" />
+
+Copy the code given by the client and send it to MassaBot.
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/22.png" alt="" />
+
 Enter the following command. Check the data from the client with the data from MassaBot.
 ```
 cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD get_status
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/23.png" alt="" />
