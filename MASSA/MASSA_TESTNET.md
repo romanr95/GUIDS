@@ -27,7 +27,7 @@ wget https://github.com/massalabs/massa/releases/download/TEST.19.1/massa_TEST.1
 ```
 <img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/1.png" width="1050" alt="" />
 
-Unpack the downloaded archive.
+Unzip the downloaded archive.
 ```
 tar zxvf massa_TEST.19.1_release_linux.tar.gz
 ```
@@ -136,7 +136,7 @@ cd /$HOME/massa/massa-client/ && ./massa-client wallet_info
 <img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/13.png" alt="" />
 
 # STEP 7
-Go to Discord, to the #testnet-faucet branch.
+Go to the #testnet-faucet channel in Discord.
 
 <img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/14.png" alt="" />
 
