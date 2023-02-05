@@ -41,7 +41,7 @@ sudo tee <<EOF >/dev/null $HOME/massa/massa-node/config/config.toml
 routable_ip = "`wget -qO- eth0.me`"
 EOF
 ```
-<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/3.png" width="1050" alt="" />
+<img src="" width="1050" alt="" />
 
 # STEP 4
 Run the node and come up with a password.
