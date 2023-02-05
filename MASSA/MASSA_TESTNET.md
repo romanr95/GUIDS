@@ -25,10 +25,14 @@ Download binaries from the official GitHub.
 cd /root
 wget https://github.com/massalabs/massa/releases/download/TEST.19.1/massa_TEST.19.1_release_linux.tar.gz
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/1.png" width="1050" alt="" />
+
 Unpack the downloaded archive.
 ```
 tar zxvf massa_TEST.19.1_release_linux.tar.gz
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/2.png" width="1050" alt="" />
+
 # STEP 3
 Write the ip-address of your server in the configuration file.
 ```
@@ -37,6 +41,8 @@ sudo tee <<EOF >/dev/null $HOME/massa/massa-node/config/config.toml
 routable_ip = "`wget -qO- eth0.me`"
 EOF
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/3.png" width="1050" alt="" />
+
 # STEP 4
 Run the node and come up with a password.
 ```
