@@ -30,7 +30,7 @@ Unpack the downloaded archive.
 tar zxvf massa_TEST.19.1_release_linux.tar.gz
 ```
 # STEP 3
-Let's write the ip-address of your server in the configuration file.
+Write the ip-address of your server in the configuration file.
 ```
 sudo tee <<EOF >/dev/null $HOME/massa/massa-node/config/config.toml
 [network]
@@ -45,9 +45,9 @@ cd $HOME/massa/massa-node/
 ```
 ./massa-node
 ```
-Node stop. (ctrl+c)
+Stop the node. (ctrl+c)
 # STEP 5
-We create a service file so that the node works in the background.
+Create a service file for the node to run in the background.
 (Replace "YOUR_PASSWORD" with your password)
 ```
 printf "[Unit]
@@ -63,7 +63,7 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/massad.service
 ```
-We start the node from the service file.
+Run the node from the service file.
 ```
 sudo systemctl daemon-reload
 ```
@@ -86,21 +86,21 @@ cd $HOME/massa/massa-client/
 ```
 ./massa-client
 ```
-Generation of a new wallet with all keys.
+Generate a new wallet with all keys.
 ```
 wallet_generate_secret_key
 ```
-Password entry.
-Registering a wallet address for staking.
+Enter password.
+Register a staking wallet address.
 ```
 wallet_info
 ```
-We look at the address of the wallet and add it to the command below.
+Look at the wallet address and add it to the command below.
 (Replace "YOUR_WALLET_ADDRESS" with your wallet address)
 ```
 node_start_staking YOUR_WALLET_ADDRESS
 ```
-Checking if the address is staked.
+Check if the address is staked.
 ```
 node_get_staking_addresses
 ```
@@ -117,21 +117,21 @@ Wallet balance check.
 ```
 cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD wallet_info
 ```
-Buying rolls.
+Buy a roll.
 ```
 cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD
 ```
 ```
 buy_rolls YOUR_WALLET_ADDRESS 1 0
 ```
-Checking the purchase of a roll. (Entering a command in the client)
+Check buying a roll. (Type command in client)
 ```
 wallet_info
 ```
 After 1 hour 40 minutes, the roll will become active and staking of tokens will begin.
 # STEP 8.
-Registering a node in Discord.
-View the IP address of your server.
+Register a node in Discord.
+Look at the IP addresses of your server.
 ```
 wget -qO- eth0.me
 ```
@@ -145,8 +145,8 @@ Enter the next command.
 ```
 node_testnet_rewards_program_ownership_proof YOUR_WALLET_ADDRESS YOUR_USER_ID
 ```
-We copy the code that the client issued.
-Enter the next command. We check the data from the client with the data from MassaBot.
+Copy the code given by the client.
+Enter the following command. Check the data from the client with the data from MassaBot.
 ```
 cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD get_status
 ```
