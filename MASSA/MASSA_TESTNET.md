@@ -35,3 +35,116 @@ sudo tee <<EOF >/dev/null $HOME/massa/massa-node/config/config.toml
 routable_ip = "`wget -qO- eth0.me`"
 EOF
 ```
+# STEP 4
+Run the node and come up with a password.
+```
+cd $HOME/massa/massa-node/
+```
+```
+./massa-node
+```
+Node stop. (ctrl+c)
+# STEP 5
+We create a service file so that the node works in the background.
+(Replace "YOUR_PASSWORD" with your password)
+```
+printf "[Unit]
+Description=Massa Node
+After=network-online.target
+[Service]
+User=$USER
+WorkingDirectory=$HOME/massa/massa-node
+ExecStart=$HOME/massa/massa-node/massa-node -p YOUR_PASSWORD
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/massad.service
+```
+We start the node from the service file.
+```
+sudo systemctl daemon-reload
+```
+```
+sudo systemctl enable massad
+```
+```
+sudo systemctl restart massad
+```
+View logs.
+```
+sudo journalctl -f -n 100 -u massad
+```
+Exit from the logs. (ctrl+c)
+# STEP 6
+Client launch.
+```
+cd $HOME/massa/massa-client/
+```
+```
+./massa-client
+```
+Generation of a new wallet with all keys.
+```
+wallet_generate_secret_key
+```
+Password entry.
+Registering a wallet address for staking.
+```
+wallet_info
+```
+We look at the address of the wallet and add it to the command below.
+(Replace "YOUR_WALLET_ADDRESS" with your wallet address)
+```
+node_start_staking YOUR_WALLET_ADDRESS
+```
+Checking if the address is staked.
+```
+node_get_staking_addresses
+```
+Exit the client (ctrl+c) and check the operation of the node.
+```
+cd /$HOME/massa/massa-client/ && ./massa-client wallet_info
+```
+# STEP 7
+Go to Discord, to the #testnet-faucet branch.
+
+Request tokens to the wallet address.
+
+Wallet balance check.
+```
+cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD wallet_info
+```
+Buying rolls.
+```
+cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD
+```
+```
+buy_rolls YOUR_WALLET_ADDRESS 1 0
+```
+Checking the purchase of a roll. (Entering a command in the client)
+```
+wallet_info
+```
+After 1 hour 40 minutes, the roll will become active and staking of tokens will begin.
+# STEP 8.
+Registering a node in Discord.
+View the IP address of your server.
+```
+wget -qO- eth0.me
+```
+Copy the IP address and send it to MassaBot.
+Copy USER_ID from MassaBot.
+Client launch.
+```
+cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD
+```
+Enter the next command.
+```
+node_testnet_rewards_program_ownership_proof YOUR_WALLET_ADDRESS YOUR_USER_ID
+```
+We copy the code that the client issued.
+Enter the next command. We check the data from the client with the data from MassaBot.
+```
+cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD get_status
+```
