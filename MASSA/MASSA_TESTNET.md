@@ -6,6 +6,8 @@
 ```MEDIUM``` - https://massalabs.medium.com/ <br>
 ```YOUTUBE``` - https://www.youtube.com/channel/UChVfdvYpn0eFk4B-T7TGmOg <br>
 ```GITHUB``` -  https://github.com/massalabs/massa/
+# EXPLORERS
+```MASSA``` - https://test.massa.net/v1
 # INSTALLING AND RUNNING A NODE (TEST.19.1)
 
 # STEP 1
