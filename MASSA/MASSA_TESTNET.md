@@ -41,7 +41,7 @@ sudo tee <<EOF >/dev/null $HOME/massa/massa-node/config/config.toml
 routable_ip = "`wget -qO- eth0.me`"
 EOF
 ```
-<img src="" width="1050" alt="" />
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/3.png" width="1050" alt="" />
 
 # STEP 4
 Run the node and come up with a password.
@@ -51,6 +51,8 @@ cd $HOME/massa/massa-node/
 ```
 ./massa-node
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/4.png" alt="" />
+
 Stop the node. (ctrl+c)
 # STEP 5
 Create a service file for the node to run in the background.
@@ -69,6 +71,8 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/massad.service
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/5.png" width="1050" alt="" />
+
 Run the node from the service file.
 ```
 sudo systemctl daemon-reload
@@ -79,10 +83,14 @@ sudo systemctl enable massad
 ```
 sudo systemctl restart massad
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/6.png" width="1050" alt="" />
+
 View logs.
 ```
 sudo journalctl -f -n 100 -u massad
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/7.png" width="1050" alt="" />
+
 Exit from the logs. (ctrl+c)
 # STEP 6
 Client launch.
@@ -92,11 +100,17 @@ cd $HOME/massa/massa-client/
 ```
 ./massa-client
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/8.png" width="1050" alt="" />
+
 Generate a new wallet with all keys.
 ```
 wallet_generate_secret_key
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/9.png" width="1050" alt="" />
+
 Enter password.
+<img src="" alt="" />
+
 Register a staking wallet address.
 ```
 wallet_info
