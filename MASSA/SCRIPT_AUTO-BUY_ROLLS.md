@@ -68,7 +68,7 @@ EOF
 ```
 <img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/27.png" width="1050" alt="" />
 
-# DELETE A SCRIPT.
+# DELETE A SCRIPT
 Delete the script.
 ```
 /usr/bin/rm /root/rollsup.sh
