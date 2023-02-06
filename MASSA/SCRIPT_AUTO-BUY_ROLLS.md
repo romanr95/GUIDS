@@ -67,3 +67,17 @@ YOUR_PASSWORD
 EOF
 ```
 <img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/27.png" width="1050" alt="" />
+
+# DELETE A SCRIPT.
+Delete the script.
+```
+/usr/bin/rm /root/rollsup.sh
+```
+Delete the script launch file by time.
+```
+/usr/bin/rm /etc/cron.d/massarolls
+```
+Delete the log file.
+```
+/usr/bin/rm /root/rolls.log
+```
