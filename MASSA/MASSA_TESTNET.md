@@ -144,7 +144,7 @@ Request tokens to the wallet address.
 
 <img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/15.png" alt="" />
 
-Wallet balance check.
+Check of the wallet balance.
 ```
 cd /$HOME/massa/massa-client/ && ./massa-client -p YOUR_PASSWORD wallet_info
 ```
