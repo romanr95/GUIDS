@@ -1,5 +1,15 @@
 <img src="https://github.com/romanr95/GUIDS/blob/main/LOGO%20MASSA.png" width="1050" alt="" />
 
+# HOW DOES THIS SCRIPT WORK?
+The script looks at the "CANDIDATE" parameter once every three minutes, and if it becomes zero, it buys 1 roll, without waiting until the rolls that have flown back into coins.
+If the "CANDIDATE" parameter is greater than zero, the script terminates and will be launched in the next 3 minutes. <br>
+Why exactly 3 minutes?
+To give the client time to process the command. Otherwise, he will buy the next roll in a minute if you have enough coins.
+The script is located in the "rollsup.sh" file in the "root" folder. <br>
+The script itself, in the process of work, will create a file for logging events. <br>
+Runs using the Crontab daemon, which is part of Linux. <br>
+All commands presented in this guide are executed from the command line of your terminal. <br>
+For the script to work properly, you must have 1 active roll and 100 or more coins on your balance.
 # STEP 1
 Go to the "root" folder.
 ```
