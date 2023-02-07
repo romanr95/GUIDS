@@ -96,18 +96,18 @@ haqqd tx staking create-validator \
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=65.109.28.177:24447 && \
+SNAP_RPC="65.108.199.120:56657" && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 100)); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 ```
 ```
-sudo systemctl stop haqqd && haqqd tendermint unsafe-reset-all --home $HOME/.haqqd --keep-addr-book
+sudo systemctl stop haqqd && haqqd tendermint unsafe-reset-all --home $HOME/.haqqd
 ```
 ```
-peers="de75081b3d402c2728e627df3590fb7ea229fd0b@65.109.28.177:24446"
-sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.haqqd/config/config.toml
+peers="19f1039614af2808abc97d959d374cdca982a109@65.108.199.120:56656" \ && 
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.haqqd/config/config.toml
 ```
 ```
 sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
