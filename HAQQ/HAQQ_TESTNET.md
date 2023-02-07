@@ -13,9 +13,9 @@
 ```TELEGRAM``` - https://t.me/islamiccoin_community <br>
 ```DOCUMENTATION``` - https://docs.haqq.network/
 # SERVICES
-```RPC``` - 65.108.199.120:36657 <br>
-```API``` - 65.108.199.120:1327 <br>
-```PEER``` - fcd6ccd5fef149059fa5d1696b3b358889046f3a@65.108.199.120:36656 
+```RPC``` - 65.108.199.120:56657 <br>
+```API``` - 65.108.199.120:1347 <br>
+```PEER``` - 19f1039614af2808abc97d959d374cdca982a109@65.108.199.120:56656 
 # EXPLORERS
 ```HAQQ``` - https://explorer.haqq.network/ 
 # HARDWARE REQUIREMENTS
@@ -48,7 +48,6 @@ wget -O $HOME/.haqqd/config/genesis.json "https://github.com/haqq-network/valida
 # DOWNLOAD ADDRBOOK
 ```
 wget -O $HOME/.haqqd/config/addrbook.json "https://raw.githubusercontent.com/obajay/nodes-Guides/main/haqq/addrbook.json"
-```
 ```
 # ADD MIN GAS
 ```
