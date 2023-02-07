@@ -1,4 +1,4 @@
-<img src="https://github.com/romanr95/Guids/blob/main/TERITORI%20LOGO.png" width="1050" alt="" />
+<img src="https://github.com/romanr95/GUIDS/blob/main/HAQQ/HAQQ_LOGO.png" width="1050" alt="" />
 
 # LINKS
 ```WEBSITE``` - https://islamiccoin.net/ <br>
