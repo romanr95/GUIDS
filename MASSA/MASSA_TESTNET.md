@@ -29,7 +29,7 @@ wget https://github.com/massalabs/massa/releases/download/TEST.19.2/massa_TEST.1
 
 Unzip the downloaded archive.
 ```
-tar zxvf massa_TEST.19.1_release_linux.tar.gz
+tar zxvf massa_TEST.19.2_release_linux.tar.gz
 ```
 <img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/2.png" width="1050" alt="" />
 
