@@ -8,7 +8,7 @@
 ```GITHUB``` -  https://github.com/massalabs/massa/
 # EXPLORERS
 ```MASSA``` - https://test.massa.net/v1
-# INSTALLING AND RUNNING A NODE (TEST.19.1)
+# INSTALLING AND RUNNING A NODE (TEST.19.2)
 
 # STEP 1
 Remove the previous version of the node (if it was installed before).
@@ -23,7 +23,7 @@ rm -rf /etc/systemd/system/multi-user.target.wants/massad.service
 Download binaries from the official GitHub.
 ```
 cd /root
-wget https://github.com/massalabs/massa/releases/download/TEST.19.1/massa_TEST.19.1_release_linux.tar.gz
+wget https://github.com/massalabs/massa/releases/download/TEST.19.2/massa_TEST.19.2_release_linux.tar.gz
 ```
 <img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/1.png" width="1050" alt="" />
 
