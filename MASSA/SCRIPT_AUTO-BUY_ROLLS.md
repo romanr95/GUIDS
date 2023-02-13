@@ -1,4 +1,4 @@
-<img src="https://github.com/romanr95/GUIDS/blob/main/LOGO%20MASSA.png" width="1050" alt="" />
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/LOGO%20MASSA.png" width="1050" alt="" />
 
 # HOW DOES THIS SCRIPT WORK?
 The script looks at the "CANDIDATE" parameter once every three minutes, and if it becomes zero, it buys 1 roll, without waiting until the rolls that have flown back into coins.
