@@ -28,7 +28,7 @@ Prerequisite: git. ref
 # INSTALL LAST BINARY
 ```
 git clone https://github.com/haqq-network/haqq
-cd haqq && git checkout v1.3.0
+cd haqq && git checkout v1.3.1
 make install
 ```
 # INIT THE CONFIG FILES
