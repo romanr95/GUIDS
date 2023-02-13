@@ -1,4 +1,4 @@
-<img src="https://github.com/romanr95/GUIDS/blob/main/LOGO%20MASSA.png" width="1050" alt="" />
+<img src="https://github.com/romanr95/GUIDS/blob/main/MASSA/LOGO%20MASSA.png" width="1050" alt="" />
 
 # LINKS
 ```WEBSITE``` - https://massa.net/ <br>
