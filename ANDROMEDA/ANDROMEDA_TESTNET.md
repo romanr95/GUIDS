@@ -6,7 +6,7 @@
 ```DISCORD``` - https://discord.gg/GBd6buKYyZ <br>
 ```GITHUB``` - https://github.com/andromedaprotocol/ <br>
 ```MEDIUM``` - https://medium.com/andromeda-engineering/ <br>
-```TELEGRAM``` - https://t.me/andromedaprotocol/
+```TELEGRAM``` - https://t.me/andromedaprotocol/ <br>
 ```WHITEPAPER``` - https://static1.squarespace.com/static/60b85587d5bf80784bda317f/t/61698246efa74863509bacd8/1634304583185/ANDROMEDA+PROTOCOL.pdf
 # SERVICES
 ```RPC``` - 65.108.199.120:36657 <br>
