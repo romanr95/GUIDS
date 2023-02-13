@@ -1,4 +1,4 @@
-<img src="https://github.com/romanr95/GUIDS/blob/main/TERITORI/TERITORI%20LOGO.png" width="1050" alt="" />
+<img src="https://github.com/romanr95/GUIDS/blob/main/ANDROMEDA/LOGO%20ANDROMEDA.png" width="1050" alt="" />
 
 # LINKS
 ```WEBSITE``` - https://andromedaprotocol.io/ <br>
