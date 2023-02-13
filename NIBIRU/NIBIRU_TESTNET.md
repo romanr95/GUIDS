@@ -1,4 +1,4 @@
-<img src="https://github.com/romanr95/GUIDS/blob/main/NIBIRU%20LOGO.png" width="1050" alt="" />
+<img src="https://github.com/romanr95/GUIDS/blob/main/NIBIRU/NIBIRU%20LOGO.png" width="1050" alt="" />
 
 # LINKS
 ```WEBSITE``` - https://nibiru.fi/ <br>
