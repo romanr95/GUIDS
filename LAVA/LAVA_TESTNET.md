@@ -1,24 +1,19 @@
-<img src="https://github.com/romanr95/GUIDS/blob/main/TERITORI/TERITORI%20LOGO.png" width="1050" alt="" />
+<img src="https://github.com/romanr95/GUIDS/blob/main/LAVA/LOGO_LAVA.png" width="1050" alt="" />
 
 # LINKS
-```WEBSITE``` - https://teritori.com/ <br>
-```TWITTER``` - https://twitter.com/TeritoriNetwork/ <br>
-```DISCORD``` - https://discord.gg/teritori/ <br>
-```GITHUB``` - https://github.com/TERITORI/ <br>
-```CREW3``` - https://teritori.crew3.xyz/ <br>
-```MEDIUM``` - https://medium.com/teritori/ <br>
-```WHITEPAPER``` - https://teritori.gitbook.io/teritori-whitepaper/ <br>
-```ROADMAP``` - https://teritori.com/roadmap/ <br>
-```THE ALPHA dApp``` - https://app.teritori.com/ <br>
-```COINGECKO``` - https://www.coingecko.com/en/coins/teritori/
+```WEBSITE``` - https://lavanet.xyz/ <br>
+```TWITTER``` - https://twitter.com/lavanetxyz <br>
+```DISCORD``` - https://discord.gg/lavanetxyz <br>
+```GITHUB``` - https://github.com/lavanet/ <br>
+```MEDIUM``` - https://medium.com/lava-network <br>
+```LITEPAPER``` - https://lavanet.xyz/assets/lava_litepaper_v0_1.pdf <br>
+```DOCUMENTATIONS``` - https://docs.lavanet.xyz/
 # SERVICES
 ```RPC``` - 65.108.199.120:36657 <br>
 ```API``` - 65.108.199.120:1327 <br>
 ```PEER``` - fcd6ccd5fef149059fa5d1696b3b358889046f3a@65.108.199.120:36656 
 # EXPLORERS
-```MINTSCAN``` - https://www.mintscan.io/teritori/ <br>
-```PINGPUB``` - https://ping.pub/teritori/ <br>
-```ATOMSCAN``` - https://atomscan.com/teritori/
+```ITROCKET``` - https://testnet.itrocket.net/lava/ 
 # HARDWARE REQUIREMENTS
 ```MEMORY``` - 32GB <br>
 ```CPUs``` - 16 <br>
@@ -28,50 +23,46 @@ Prerequisite: go1.18+ required. ref <br>
 Prerequisite: git. ref
 # INSTALL LAST BINARY
 ```
-git clone https://github.com/TERITORI/teritori-chain
-cd teritori-chain && git checkout v1.3.0
+git clone https://github.com/lavanet/lava
+cd lava && git checkout v0.5.2
 make install
 ```
 # INIT THE CONFIG FILES
 ```
-teritorid init <moniker> --chain-id teritori-1
-teritorid config chain-id teritori-1
+lavad init <moniker> --chain-id lava-testnet-1
+lavad config chain-id lava-testnet-1
 ```
 # CREATE OR RESTORE A WALLET
 ```
-teritorid keys add <wallet_name>
-teritorid keys add <wallet_name> --recover
+lavad keys add <wallet_name>
+lavad keys add <wallet_name> --recover
 ```
 # DOWNLOAD GENESIS
 ```
-wget -O $HOME/.teritorid/config/genesis.json "https://media.githubusercontent.com/media/TERITORI/teritori-chain/v1.1.2/mainnet/teritori-1/genesis.json"
+curl https://anode.team/Lava/test/genesis.json > ~/.lava/config/genesis.json
 ```
 # DOWNLOAD ADDRBOOK
 ```
-wget -O $HOME/.teritorid/config/addrbook.json "http://65.108.6.45:8000/teritori/addrbook.json"
+curl https://anode.team/Lava/test/addrbook.json > ~/.lava/config/addrbook.json
 ```
-# ADD PEERS
+# ADD PEERS AND SEED
 ```
-peers="3069b058b5ed85c3cdb2cf18fb1d255d966b53af@193.149.187.8:26656,a06fbbb9ace823ae28a696a91daa2d0644653c28@65.21.32.200:26756"
-sed -i.bak -e "s/^seeds *=.*/seeds = \"$seeds\"/; s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.teritorid/config/config.toml
-```
-# ADD MIN GAS
-```
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.25unibi\"/" $HOME/.nibid/config/app.toml
+seeds="3a445bfdbe2d0c8ee82461633aa3af31bc2b4dc0@prod-pnet-seed-node.lavanet.xyz:26656,e593c7a9ca61f5616119d6beb5bd8ef5dd28d62d@prod-pnet-seed-node2.lavanet.xyz:26656"
+sed -i.bak -e "s/^seeds *=.*/seeds = \"$seeds\"/; s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.lava/config/config.toml
 ```
 # CREATE THE SERVICE FILE
 ```
-sudo tee /etc/systemd/system/teritorid.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/lavad.service > /dev/null <<EOF
 [Unit]
-Description=Teritori Daemon
+Description=Lava
 After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which teritorid) start
-Restart=on-failure
+ExecStart=$(which lavad) start
+Restart=always
 RestartSec=3
-LimitNOFILE=4096
+LimitNOFILE=65535
 
 [Install]
 WantedBy=multi-user.target
@@ -79,51 +70,49 @@ EOF
 ```
 # LOAD SERVICE AND START
 ```
-sudo systemctl daemon-reload && sudo systemctl enable teritorid
-sudo systemctl restart teritorid && journalctl -fu teritorid -o cat
+sudo systemctl daemon-reload && sudo systemctl enable lavad
+sudo systemctl restart lavad && journalctl -fu lavad -o cat
 ```
 # CREATE VALIDATOR
 ```
-teritorid tx staking create-validator \
-  --amount=1000000utori \
-  --pubkey=$(teritorid tendermint show-validator) \
+lavad tx staking create-validator \
+  --amount=1000000000ulava \
+  --pubkey=$(lavad tendermint show-validator) \
   --moniker="<moniker>" \
   --identity="<identity>" \
   --website="<website>" \
   --details="<details>" \
   --security-contact="<contact>" \
-  --chain-id="teritori-1" \
-  --commission-rate="0.05" \
+  --chain-id="lava-testnet-1" \
+  --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
-  --min-self-delegation="1000000" \
+  --min-self-delegation="1" \
+  --fees="200ulava" \
   --from=<wallet_name>
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=65.108.199.120:36657 && \
+SNAP_RPC=https://lava.rpc.t.anode.team:443 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 100)); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 ```
 ```
-sudo systemctl stop teritorid && teritorid tendermint unsafe-reset-all --home $HOME/.teritorid --keep-addr-book
+sudo systemctl stop lavad && lavad tendermint unsafe-reset-all --home $HOME/.lava --keep-addr-book
 ```
 ```
-peers="fcd6ccd5fef149059fa5d1696b3b358889046f3a@65.108.199.120:36656"
-sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.teritorid/config/config.toml
+peers="f9190a58670c07f8202abfd9b5b14187b18d755b@144.76.97.251:27656"
+sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.lava/config/config.toml
 ```
 ```
 sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
 s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
 s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
-s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.teritorid/config/config.toml
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.lava/config/config.toml
 ```
 ```
-curl -o - -L https://anode.team/Teritori/main/anode.team_teritori_wasm.tar.lz4 | lz4 -c -d - | tar -x -C $HOME/.teritorid/data
-```
-```
-sudo systemctl restart teritorid && journalctl -fu teritorid -o cat
+sudo systemctl restart lavad && journalctl -u lavad -f
 ```
