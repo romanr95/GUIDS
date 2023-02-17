@@ -9,9 +9,9 @@
 ```LITEPAPER``` - https://lavanet.xyz/assets/lava_litepaper_v0_1.pdf <br>
 ```DOCUMENTATIONS``` - https://docs.lavanet.xyz/
 # SERVICES
-```RPC``` - 65.108.199.120:36657 <br>
-```API``` - 65.108.199.120:1327 <br>
-```PEER``` - fcd6ccd5fef149059fa5d1696b3b358889046f3a@65.108.199.120:36656 
+```RPC``` - 65.108.199.120:60757 <br>
+```API``` - 65.108.199.120:1377 <br>
+```PEER``` - e5f324d671e8bba44cd8eef2cb5b6e46ccf4f95a@65.108.199.120:60756 
 # EXPLORERS
 ```ITROCKET``` - https://testnet.itrocket.net/lava/ 
 # HARDWARE REQUIREMENTS
@@ -93,7 +93,7 @@ lavad tx staking create-validator \
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=https://lava.rpc.t.anode.team:443 && \
+SNAP_RPC=65.108.199.120:60757 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
@@ -103,7 +103,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 sudo systemctl stop lavad && lavad tendermint unsafe-reset-all --home $HOME/.lava --keep-addr-book
 ```
 ```
-peers="f9190a58670c07f8202abfd9b5b14187b18d755b@144.76.97.251:27656"
+peers="e5f324d671e8bba44cd8eef2cb5b6e46ccf4f95a@65.108.199.120:60756"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.lava/config/config.toml
 ```
 ```
