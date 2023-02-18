@@ -17,9 +17,9 @@
 ```SINFONIA APP``` - https://app.sinfonia.zone/ <br>
 ```COINGECKO``` - https://www.coingecko.com/en/coins/bitsong
 # SERVICES
-```RPC``` - 65.108.199.120:36657 <br>
-```API``` - 65.108.199.120:1327 <br>
-```PEER``` - fcd6ccd5fef149059fa5d1696b3b358889046f3a@65.108.199.120:36656 
+```RPC``` - 65.108.199.120:26657 <br>
+```API``` - 65.108.199.120:1317 <br>
+```PEER``` - 08522d08679779293a1d4a1ea1e28738512274a0@65.108.199.120:26656 
 # EXPLORERS
 ```MINTSCAN``` - https://www.mintscan.io/bitsong <br>
 ```PINGPUB``` - https://ping.pub/bitsong <br>
@@ -109,9 +109,9 @@ bitsongd tx staking create-validator \
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=https://bitsong.rpc.m.anode.team:443 && \
+SNAP_RPC=65.108.199.120:26657 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 100)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 ```
@@ -119,7 +119,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 sudo systemctl stop bitsongd && bitsongd tendermint unsafe-reset-all --home $HOME/.bitsongd --keep-addr-book
 ```
 ```
-peers="b8a60ad6246ec986d29c1ab900032f3c78605b76@65.108.199.222:26616"
+peers="08522d08679779293a1d4a1ea1e28738512274a0@65.108.199.120:26656"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.bitsongd/config/config.toml
 ```
 ```
