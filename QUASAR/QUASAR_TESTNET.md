@@ -74,11 +74,15 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/QUASAR/6.png" width="1050" alt="" />
+
 # LOAD SERVICE AND START
 ```
 sudo systemctl daemon-reload && sudo sudo systemctl enable quasarnoded
 sudo systemctl restart quasarnoded && sudo journalctl -u quasarnoded -f
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/QUASAR/7.png" width="1050" alt="" />
+
 # CREATE OR RESTORE A WALLET
 ```
 quasarnoded keys add <wallet_name>
