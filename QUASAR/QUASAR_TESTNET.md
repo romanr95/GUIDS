@@ -27,30 +27,35 @@ wget https://github.com/quasar-finance/binary-release/raw/main/v0.0.2-alpha-11/q
 chmod +x quasarnoded-linux-amd64
 sudo mv quasarnoded-linux-amd64 $HOME/go/bin/quasarnoded
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/QUASAR/1.png" width="1050" alt="" />
+
 # INIT THE CONFIG FILES
 ```
 quasarnoded init <moniker> --chain-id qsr-questnet-04
 quasarnoded config chain-id qsr-questnet-04
 ```
-# CREATE OR RESTORE A WALLET
-```
-quasarnoded keys add <wallet_name>
-quasarnoded keys add <wallet_name> --recover
-```
+<img src="https://github.com/romanr95/GUIDS/blob/main/QUASAR/2.png" width="1050" alt="" />
+
 # DOWNLOAD GENESIS
 ```
 wget -O $HOME/.quasarnode/config/genesis.json https://files.itrocket.net/testnet/quasar/genesis.json
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/QUASAR/3.png" width="1050" alt="" />
+
 # ADD PEERS
 ```
 SEEDS=""
 PEERS="6ccfdbe91c06698f0a66cf95a249dbcd88b5aaa4@quasar-testnet-peer.itrocket.net:443,bba6e85e3d1f1d9c127324e71a982ddd86af9a99@88.99.3.158:18256,bcb8d2b5d5464cddbab9ce2705aae3ad3e38aeac@144.76.67.53:2490,1c1043ae487c91209fce8c589a5772a7f3846e7c@136.243.88.91:8080,1112acc7479a8a1afb0777b0b9a39fb1f7e77abd@34.175.69.87:26656,bffb10a5619be7bfa98919e08f4a6bef4f8f6bf0@135.181.210.186:26656,695b9dc49a979e4c5986c5ae9a6effc8bc8597f0@185.197.250.151:27656,8937bdacf1f0c8b2d1ffb4606554eaf08bd55df4@5.75.255.107:26656,a23f002bda10cb90fa441a9f2435802b35164441@38.146.3.203:18256,41ee7632f310c035235828ce03c208dbe1e24d7d@38.146.3.204:18256,966acc999443bae0857604a9fce426b5e09a7409@65.108.105.48:18256"
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.quasarnode/config/config.toml
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/QUASAR/4.png" width="1050" alt="" />
+
 # ADD MIN GAS
 ```
 sed -i 's/minimum-gas-prices =.*/minimum-gas-prices = "0.0uqsr"/g' $HOME/.quasarnode/config/app.toml
 ```
+<img src="https://github.com/romanr95/GUIDS/blob/main/QUASAR/5.png" width="1050" alt="" />
+
 # CREATE THE SERVICE FILE
 ```
 sudo tee /etc/systemd/system/quasarnoded.service > /dev/null <<EOF
@@ -73,6 +78,11 @@ EOF
 ```
 sudo systemctl daemon-reload && sudo sudo systemctl enable quasarnoded
 sudo systemctl restart quasarnoded && sudo journalctl -u quasarnoded -f
+```
+# CREATE OR RESTORE A WALLET
+```
+quasarnoded keys add <wallet_name>
+quasarnoded keys add <wallet_name> --recover
 ```
 # CREATE VALIDATOR
 ```
