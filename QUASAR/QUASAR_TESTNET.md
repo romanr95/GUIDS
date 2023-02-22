@@ -105,7 +105,7 @@ quasarnoded tx staking create-validator \
   --min-self-delegation="1000000" \
   --from=<wallet_name>
 ```
-# STATE-SYNC
+# STATE-SYNC (DOES NOT WORK)
 ```
 SNAP_RPC=65.108.199.120:61057 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
