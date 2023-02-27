@@ -9,9 +9,9 @@
 ```MEDIUM``` - https://blog.nibiru.fi/ <br>
 ```LINKEDIN``` - https://www.linkedin.com/company/nibiruchain/ 
 # SERVICES
-```RPC``` - 65.108.199.120:46657 <br>
-```API``` - 65.108.199.120:1337 <br>
-```PEER``` - ddb452dcad628cc17f519467810a2957518ac7d7@65.108.199.120:46656 
+```RPC``` - 65.108.199.120:61757 <br>
+```API``` - 65.108.199.120:1457 <br>
+```PEER``` - 7eda2a725343a3d9847064fea3eb7b4f05490517@65.108.199.120:61756 
 # EXPLORERS
 ```NIBIRU.FI``` - https://testnet-2.nibiru.fi/ 
 # SOFTWARE REQUIREMENTS
@@ -21,13 +21,13 @@ Prerequisite: git. ref
 ```
 git clone https://github.com/NibiruChain/nibiru
 cd nibiru
-git checkout v0.16.3
+git checkout v0.19.2
 make install
 ```
 # INIT THE CONFIG FILES
 ```
-nibid init <moniker> --chain-id nibiru-testnet-2
-nibid config chain-id nibiru-testnet-2
+nibid init <moniker> --chain-id nibiru-itn-1
+nibid config chain-id nibiru-itn-1
 ```
 # CREATE OR RESTORE A WALLET
 ```
@@ -42,20 +42,21 @@ curl https://anode.team/Nibiru/test/genesis.json > ~/.nibid/config/genesis.json
 ```
 curl https://anode.team/Nibiru/test/addrbook.json > ~/.nibid/config/addrbook.json
 ```
-# ADD PEERS
+# ADD PEERS AND SEEDS
 ```
-peers="5d9432668a2acd0587ecb77b5728177d216c02bc@65.109.93.152:36316"
-sed -i.bak -e "s/^seeds *=.*/seeds = \"$seeds\"/; s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.nibid/config/config.toml
+SEEDS=""
+PEERS="dd58949cab9bf75a42b556d04d3a4b1bbfadd8b5@144.76.97.251:40656"
+sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.nibid/config/config.toml
 ```
 # ADD MIN GAS
 ```
-sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0.25unibi"/g' ~/.nibid/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025unibi\"/" $HOME/.nibid/config/app.toml
 ```
 # CREATE THE SERVICE FILE
 ```
 sudo tee /etc/systemd/system/nibid.service > /dev/null <<EOF
 [Unit]
-Description=Nibiru
+Description=nibiru
 After=network-online.target
 
 [Service]
@@ -63,7 +64,7 @@ User=$USER
 ExecStart=$(which nibid) start
 Restart=always
 RestartSec=3
-LimitNOFILE=65535
+LimitNOFILE=4096
 
 [Install]
 WantedBy=multi-user.target
@@ -77,24 +78,24 @@ sudo systemctl restart nibid && journalctl -fu nibid -o cat
 # CREATE VALIDATOR
 ```
 nibid tx staking create-validator \
-  --amount=10000000unibi \
+  --amount=1000000unibi \
   --pubkey=$(nibid tendermint show-validator) \
   --moniker="<moniker>" \
   --identity="<identity>" \
   --website="<website>" \
   --details="<details>" \
   --security-contact="<contact>" \
-  --chain-id="nibiru-testnet-2" \
+  --chain-id="nibiru-itn-1" \
   --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="1" \
-  --fees 5000unibi \
+  --fees="5000unibi" \
   --from=<wallet_name>
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=65.108.199.120:46657 && \
+SNAP_RPC=65.108.199.120:61757 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
@@ -104,7 +105,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 sudo systemctl stop nibid && nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
 ```
 ```
-peers="ddb452dcad628cc17f519467810a2957518ac7d7@65.108.199.120:46656"
+peers="7eda2a725343a3d9847064fea3eb7b4f05490517@65.108.199.120:61756"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.nibid/config/config.toml
 ```
 ```
