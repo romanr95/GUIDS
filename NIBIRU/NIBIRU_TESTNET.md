@@ -11,7 +11,7 @@
 # SERVICES
 ```RPC``` - 65.108.199.120:61757 <br>
 ```API``` - 65.108.199.120:1457 <br>
-```PEER``` - 7eda2a725343a3d9847064fea3eb7b4f05490517@65.108.199.120:61756 
+```PEER``` - 2479ff4d8c0918b95da280319b179f016b5db814@65.108.199.120:61756 
 # EXPLORERS
 ```NIBIRU.FI``` - https://testnet-2.nibiru.fi/ 
 # SOFTWARE REQUIREMENTS
@@ -105,7 +105,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 sudo systemctl stop nibid && nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
 ```
 ```
-peers="7eda2a725343a3d9847064fea3eb7b4f05490517@65.108.199.120:61756"
+peers="2479ff4d8c0918b95da280319b179f016b5db814@65.108.199.120:61756"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.nibid/config/config.toml
 ```
 ```
