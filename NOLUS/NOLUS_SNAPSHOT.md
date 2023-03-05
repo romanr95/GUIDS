@@ -16,7 +16,7 @@ mkdir $HOME/.nolus/data/
 ```
 4. Downloading the archive
 ```
-wget http://80.76.43.63:8000/nolusdata.tar.gz
+wget http://65.108.199.120:8000/nolusdata.tar.gz
 ```
 5. Unpacking the archive
 ```
