@@ -1,6 +1,6 @@
 <img src="https://github.com/romanr95/GUIDS/blob/main/NOLUS/LOGO_NOLUS.png" width="1050" alt="" />
 
-# SNAPSHOT (1250340 block)
+# SNAPSHOT (1251645 block)
 1. Node stop
 ```
 sudo systemctl stop nolusd
