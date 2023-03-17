@@ -26,7 +26,7 @@
 # SOFTWARE REQUIREMENTS
 Prerequisite: go1.18+ required. ref <br>
 Prerequisite: git. ref
-# INSTALL LAST BINARY
+# INSTALL LAST BINARY (ACTUAL)
 ```
 git clone https://github.com/TERITORI/teritori-chain
 cd teritori-chain && git checkout v1.3.1
