@@ -10,7 +10,7 @@
 ```WHITEPAPER``` - https://static1.squarespace.com/static/60b85587d5bf80784bda317f/t/61698246efa74863509bacd8/1634304583185/ANDROMEDA+PROTOCOL.pdf
 # SERVICES
 ```RPC``` - 65.108.199.120:61357 <br>
-```API``` - 65.108.199.120:1397 <br>
+```API``` - 65.108.199.120:1497 <br>
 ```PEER``` - 50ca8e25cf1c5a83aa4c79bb1eabfe88b20eb367@65.108.199.120:61356 
 # EXPLORERS
 ```WILDSAGE``` - https://testnet-ping.wildsage.io/andromeda/
@@ -99,7 +99,7 @@ andromedad tx staking create-validator \
 ```
 SNAP_RPC=65.108.199.120:61357 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 100)); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 ```
