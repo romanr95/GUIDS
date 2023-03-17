@@ -29,7 +29,7 @@ Prerequisite: git. ref
 # INSTALL LAST BINARY
 ```
 git clone https://github.com/TERITORI/teritori-chain
-cd teritori-chain && git checkout v1.3.0
+cd teritori-chain && git checkout v1.3.1
 make install
 ```
 # INIT THE CONFIG FILES
