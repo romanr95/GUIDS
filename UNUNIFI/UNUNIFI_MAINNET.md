@@ -14,7 +14,7 @@
 # SERVICES
 ```RPC``` - 65.108.199.120:60657 <br>
 ```API``` - 65.108.199.120:1367 <br>
-```PEER``` - 08522d08679779293a1d4a1ea1e28738512274a0@65.108.199.120:60656 
+```PEER``` - e9539642f4ca58bb6dc09257d4ba8fc00467235f@65.108.199.120:60656 
 # EXPLORERS
 ```UNUNIFI``` - https://ununifi.io/explorer/
 # HARDWARE REQUIREMENTS
@@ -110,7 +110,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 sudo systemctl stop ununifid && ununifid unsafe-reset-all --home $HOME/.ununifi
 ```
 ```
-peers="08522d08679779293a1d4a1ea1e28738512274a0@65.108.199.120:60656"
+peers="e9539642f4ca58bb6dc09257d4ba8fc00467235f@65.108.199.120:60656"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.ununifi/config/config.toml
 ```
 ```
