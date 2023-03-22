@@ -5,9 +5,9 @@
 ```DISCORD``` - https://discord.gg/Sys6n7HM6U <br>
 ```GITHUB``` - https://github.com/vincadian 
 # SERVICES
-```RPC``` - 65.108.199.120:26657 <br>
-```API``` - 65.108.199.120:1317 <br>
-```PEER``` - 08522d08679779293a1d4a1ea1e28738512274a0@65.108.199.120:26656
+```RPC``` - 65.108.199.120:29657 <br>
+```API``` - 65.108.199.120:4317 <br>
+```PEER``` - 2ded52b81c0662c60eeb336ecebc15d5247fc69f@65.108.199.120:29656
 # EXPLORERS
 ```ARKHADIAN``` - https://explorer.arkhadian.com/arkh
 # HARDWARE REQUIREMENTS
@@ -95,7 +95,7 @@ arkhd tx staking create-validator \
   ```
   # STATE-SYNC
 ```
-SNAP_RPC=https://arkh.rpc.m.anode.team:443 && \
+SNAP_RPC=65.108.199.120:29657 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
@@ -105,7 +105,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 wget https://anode.team/unsafe-reset-all.sh && chmod u+x unsafe-reset-all.sh && ./unsafe-reset-all.sh arkhd arkh
 ```
 ```
-peers="1af8fdecd6e8f9ec1bfcc3288fe46ce45e4df963@144.76.97.251:39656"
+peers="2ded52b81c0662c60eeb336ecebc15d5247fc69f@65.108.199.120:29656"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.arkh/config/config.toml
 ```
 ```
