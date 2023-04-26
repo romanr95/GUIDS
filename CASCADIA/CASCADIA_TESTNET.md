@@ -1,4 +1,4 @@
-<img src="https://github.com/romanr95/GUIDS/blob/main/ANDROMEDA/LOGO%20ANDROMEDA.png" width="1050" alt="" />
+<img src="https://github.com/romanr95/GUIDS/blob/main/CASCADIA/LOGO_CASCADIA.png" width="1050" alt="" />
 
 # LINKS
 ```WEBSITE``` - https://www.cascadia.foundation/ <br>
@@ -18,58 +18,60 @@
 ```BLOCK``` - https://explorer.cascadia.foundation/ <br>
 ```VALIDATOR``` https://validator.cascadia.foundation/
 # HARDWARE REQUIREMENTS
-```MEMORY``` - 32GB <br>
-```CPUs``` - 16 <br>
-```DISK``` - 500GB
+```MEMORY``` - 8GB <br>
+```CPUs``` - 2 x dedicated/physical CPUs, either Intel or AMD, with the SSE4.1 and SSE4.2 flags (use lscpu to verify) <br>
+```DISK``` - 200GB SSD
 # SOFTWARE REQUIREMENTS
-Prerequisite: go1.18+ required. ref <br>
+Prerequisite: go1.18.5+ required. ref <br>
 Prerequisite: git. ref
 # INSTALL LAST BINARY
 ```
-git clone https://github.com/andromedaprotocol/andromedad.git
-cd andromedad && git checkout galileo-3-v1.1.0-beta1
+git clone https://github.com/CascadiaFoundation/cascadia
+cd cascadia
+git checkout v0.1.1
 make install
 ```
 # INIT THE CONFIG FILES
 ```
-andromedad init <moniker> --chain-id galileo-3
-andromedad config chain-id galileo-3
+cascadiad init <moniker> --chain-id cascadia_6102-1
+cascadiad config chain-id cascadia_6102-1
 ```
 # CREATE OR RESTORE A WALLET
 ```
-andromedad keys add <wallet_name>
-andromedad keys add <wallet_name> --recover
+cascadiad keys add <wallet_name> 
+cascadiad keys add <wallet_name> --recover
 ```
 # DOWNLOAD GENESIS
 ```
-wget -qO $HOME/.andromeda/config/genesis.json wget "https://snapshot.yeksin.net/andromeda/genesis.json"
+curl https://anode.team/Cascadia/test/genesis.json > ~/.cascadiad/config/genesis.json
 ```
 # DOWNLOAD ADDRBOOK
 ```
-wget -qO $HOME/.andromedad/config/addrbook.json wget "https://snapshot.yeksin.net/andromeda/addrbook.json"
+curl https://anode.team/Cascadia/test/addrbook.json > ~/.cascadiad/config/addrbook.json
 ```
 # ADD PEERS
 ```
-PEERS="06d4ab2369406136c00a839efc30ea5df9acaf11@10.128.0.44:26656,43d667323445c8f4d450d5d5352f499fa04839a8@192.168.0.237:26656,29a9c5bfb54343d25c89d7119fade8b18201c503@192.168.101.79:26656,6006190d5a3a9686bbcce26abc79c7f3f868f43a@37.252.184.230:26656"
-sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.andromedad/config/config.toml
+SEEDS=""
+PEERS="1d61222b7b8e180aacebfd57fbd2d8ab95ebdc4c@65.109.93.152:35656"
+sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.cascadiad/config/config.toml
 ```
 # ADD MIN GAS
 ```
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.25uandr\"/" $HOME/.andromedad/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025aCC\"/" $HOME/.cascadiad/config/app.toml
 ```
 # CREATE THE SERVICE FILE
 ```
-sudo tee /etc/systemd/system/andromedad.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/cascadiad.service > /dev/null <<EOF
 [Unit]
-Description= Andromeda Network Node
+Description=Cascadia Foundation
 After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which andromedad) start
-Restart=on-failure
+ExecStart=$(which cascadiad) start
+Restart=always
 RestartSec=3
-LimitNOFILE=65535
+LimitNOFILE=4096
 
 [Install]
 WantedBy=multi-user.target
@@ -77,49 +79,51 @@ EOF
 ```
 # LOAD SERVICE AND START
 ```
-sudo systemctl daemon-reload && sudo systemctl enable andromedad
-sudo systemctl restart andromedad && journalctl -fu andromedad -o cat
+sudo systemctl daemon-reload && sudo systemctl enable cascadiad
+sudo systemctl restart cascadiad && journalctl -fu cascadiad -o cat
 ```
 # CREATE VALIDATOR
 ```
-andromedad tx staking create-validator \
-  --amount=1000000uandr \
-  --pubkey=$(andromedad tendermint show-validator) \
+cascadiad tx staking create-validator \
+  --amount=1000000000000000000aCC \
+  --pubkey=$(cascadiad tendermint show-validator) \
   --moniker="<moniker>" \
   --identity="<identity>" \
   --website="<website>" \
   --details="<details>" \
   --security-contact="<contact>" \
-  --chain-id="galileo-3" \
-  --commission-rate="0.05" \
+  --chain-id="cascadia_6102-1" \
+  --commission-rate="0.10" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
-  --min-self-delegation="1000000" \
-  --fees=2000uandr \
+  --min-self-delegation="1" \
+  --gas "auto" \
+  --gas-adjustment=1.2 \
+  --gas-prices="7aCC" \
   --from=<wallet_name>
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=65.108.199.120:61357 && \
+SNAP_RPC=https://cascadia.rpc.t.anode.team:443 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 5000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 ```
 ```
-sudo systemctl stop andromedad && andromedad tendermint unsafe-reset-all --home $HOME/.andromedad --keep-addr-book
+wget https://anode.team/unsafe-reset-all.sh && chmod u+x unsafe-reset-all.sh && ./unsafe-reset-all.sh cascadiad .cascadiad
 ```
 ```
-peers="50ca8e25cf1c5a83aa4c79bb1eabfe88b20eb367@65.108.199.120:61356"
-sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.andromedad/config/config.toml
+peers="1d61222b7b8e180aacebfd57fbd2d8ab95ebdc4c@65.109.93.152:35656"
+sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.cascadiad/config/config.toml
 ```
 ```
 sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
 s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
 s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
-s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.andromedad/config/config.toml
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.cascadiad/config/config.toml
 ```
 ```
-sudo systemctl restart andromedad && journalctl -fu andromedad -o cat
+sudo systemctl restart cascadiad && journalctl -fu cascadiad -o cat
 ```
