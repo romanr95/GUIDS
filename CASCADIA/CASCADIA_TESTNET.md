@@ -11,9 +11,9 @@
 ```WHITEPAPER``` - https://drive.google.com/file/d/1t_s9tc04Ewr_CzHEWochzwZzVL7Vh3bz/edit <br>
 ```ZEALY``` - https://zealy.io/c/cascadia/
 # SERVICES
-```RPC``` - 65.108.199.120:61357 <br>
-```API``` - 65.108.199.120:1497 <br>
-```PEER``` - 50ca8e25cf1c5a83aa4c79bb1eabfe88b20eb367@65.108.199.120:61356 
+```RPC``` - 65.108.199.120:27357 <br>
+```API``` - 65.108.199.120:1615 <br>
+```PEER``` - 999a25899ae1d261bfe8a35369752ddfde47220b@65.108.199.120:27356 
 # EXPLORERS
 ```BLOCK``` - https://explorer.cascadia.foundation/ <br>
 ```VALIDATOR``` https://validator.cascadia.foundation/
@@ -104,7 +104,7 @@ cascadiad tx staking create-validator \
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=https://cascadia.rpc.t.anode.team:443 && \
+SNAP_RPC=65.108.199.120:27357 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 5000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
@@ -114,7 +114,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 wget https://anode.team/unsafe-reset-all.sh && chmod u+x unsafe-reset-all.sh && ./unsafe-reset-all.sh cascadiad .cascadiad
 ```
 ```
-peers="1d61222b7b8e180aacebfd57fbd2d8ab95ebdc4c@65.109.93.152:35656"
+peers="999a25899ae1d261bfe8a35369752ddfde47220b@65.108.199.120:27356"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.cascadiad/config/config.toml
 ```
 ```
