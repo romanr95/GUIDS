@@ -24,7 +24,7 @@ Prerequisite: git. ref
 # INSTALL LAST BINARY
 ```
 git clone https://github.com/lavanet/lava
-cd lava && git checkout v0.7.0-RC1
+cd lava && git checkout v0.10.1
 make install
 ```
 # INIT THE CONFIG FILES
