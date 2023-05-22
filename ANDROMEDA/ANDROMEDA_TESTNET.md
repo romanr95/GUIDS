@@ -39,11 +39,11 @@ andromedad keys add <wallet_name> --recover
 ```
 # DOWNLOAD GENESIS
 ```
-wget -qO $HOME/.andromeda/config/genesis.json wget "https://snapshot.yeksin.net/andromeda/genesis.json"
+curl https://anode.team/Andromeda/test/genesis.json > ~/.andromedad/config/genesis.json
 ```
 # DOWNLOAD ADDRBOOK
 ```
-wget -qO $HOME/.andromedad/config/addrbook.json wget "https://snapshot.yeksin.net/andromeda/addrbook.json"
+curl https://anode.team/Andromeda/test/addrbook.json > ~/.andromedad/config/addrbook.json
 ```
 # ADD PEERS
 ```
