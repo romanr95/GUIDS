@@ -9,9 +9,9 @@
 ```MEDIUM``` - https://medium.com/nolusprotocol <br>
 ```REDDIT``` - https://www.reddit.com/r/NolusProtocol/
 # SERVICES
-```RPC``` - 65.108.199.120:61757 <br>
-```API``` - 65.108.199.120:1457 <br>
-```PEER``` - 2479ff4d8c0918b95da280319b179f016b5db814@65.108.199.120:61756 
+```RPC``` - 65.108.199.120:35457 <br>
+```API``` - 65.108.199.120:1521 <br>
+```PEER``` - 3c2e6d8aac25e2d620deb1478a02127aa8f7b346@65.108.199.120:35456 
 # EXPLORERS
 ```NODES.GURU``` - https://nolus.explorers.guru/
 # SOFTWARE REQUIREMENTS
@@ -92,9 +92,9 @@ nolusd tx staking create-validator \
 ```
 # STATE-SYNC
 ```
-SNAP_RPC=https://nolus.rpc.t.anode.team:443 && \
+SNAP_RPC=65.108.199.120:35457 && \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) && \
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 ```
@@ -102,7 +102,7 @@ echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 sudo systemctl stop nolusd && nolusd tendermint unsafe-reset-all --home $HOME/.nolus --keep-addr-book
 ```
 ```
-peers="2e80da0046dd3f2205a207dd435b6c9b0f9bfc04@65.109.93.152:27656"
+peers="3c2e6d8aac25e2d620deb1478a02127aa8f7b346@65.108.199.120:35456"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.nolus/config/config.toml
 ```
 ```
